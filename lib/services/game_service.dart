@@ -14,14 +14,14 @@ class GameService {
         .timeout(const Duration(seconds: 10));
 
     if (response.statusCode != 200) {
-      throw Exception('Erreur serveur : ${response.statusCode}');
+      throw Exception('Server error: ${response.statusCode}');
     }
 
     final data = jsonDecode(response.body);
     final list = data as List;
 
     if (list.isEmpty) {
-      throw Exception('Aucun jeu disponible.');
+      throw Exception('No games available.');
     }
 
     final randomIndex = Random().nextInt(list.length);

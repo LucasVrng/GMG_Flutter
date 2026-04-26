@@ -45,18 +45,18 @@ class _RandomGameScreenState extends State<RandomGameScreen> {
         foregroundColor: _SteamColors.textPrimary,
         elevation: 0,
         title: const Text(
-          'Découverte aléatoire',
+          'Random discovery',
           style: TextStyle(fontWeight: FontWeight.w600),
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          tooltip: 'Retour à l\'accueil',
+          tooltip: 'Back to home',
           onPressed: () => Navigator.of(context).maybePop(),
         ),
         actions: [
           IconButton(
             icon: const Icon(Icons.casino),
-            tooltip: 'Tirer un autre jeu',
+            tooltip: 'Pick another game',
             onPressed: _reroll,
           ),
         ],
@@ -76,7 +76,7 @@ class _RandomGameScreenState extends State<RandomGameScreen> {
           final game = snapshot.data;
           if (game == null) {
             return _ErrorView(
-              message: 'Aucun jeu reçu.',
+              message: 'No game received.',
               onRetry: _reroll,
             );
           }
@@ -99,7 +99,7 @@ class _LoadingView extends StatelessWidget {
           CircularProgressIndicator(color: _SteamColors.panelLight),
           SizedBox(height: 16),
           Text(
-            'Chargement du jeu...',
+            'Loading game...',
             style: TextStyle(color: _SteamColors.textMuted),
           ),
         ],
@@ -134,7 +134,7 @@ class _ErrorView extends StatelessWidget {
             ElevatedButton.icon(
               onPressed: onRetry,
               icon: const Icon(Icons.refresh),
-              label: const Text('Réessayer'),
+              label: const Text('Retry'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: _SteamColors.accentDark,
                 foregroundColor: Colors.white,
@@ -247,10 +247,10 @@ class _GameDetailView extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       _InfoRow(label: 'Genre', value: game.genre),
-                      _InfoRow(label: 'Développeur', value: game.developer),
-                      _InfoRow(label: 'Éditeur', value: game.publisher),
+                      _InfoRow(label: 'Developer', value: game.developer),
+                      _InfoRow(label: 'Publisher', value: game.publisher),
                       _InfoRow(
-                        label: 'Date de sortie',
+                        label: 'Release date',
                         value: game.releaseDate,
                       ),
                     ],
@@ -262,7 +262,7 @@ class _GameDetailView extends StatelessWidget {
                   child: ElevatedButton.icon(
                     onPressed: onReroll,
                     icon: const Icon(Icons.casino),
-                    label: const Text('Tirer un autre jeu'),
+                    label: const Text('Pick another game'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: _SteamColors.accentDark,
                       foregroundColor: Colors.white,
