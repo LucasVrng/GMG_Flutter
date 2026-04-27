@@ -45,7 +45,6 @@ class _SearchScreenState extends State<SearchScreen> {
           offset: const Offset(0, 50),
           color: steamMenuBg,
           onSelected: _filterGames,
-          // Le bouton de la AppBar
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
