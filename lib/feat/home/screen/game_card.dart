@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'game_detail_page.dart'; // adapt to structure
 
 class Game {
   final int id;
@@ -8,7 +7,6 @@ class Game {
   final String shortDescription;
   final String genre;
   final String platform;
-  final String gameUrl;
 
   const Game({
     required this.id,
@@ -17,7 +15,6 @@ class Game {
     required this.shortDescription,
     required this.genre,
     required this.platform,
-    required this.gameUrl,
   });
 
   factory Game.fromJson(Map<String, dynamic> json) {
@@ -28,9 +25,9 @@ class Game {
       shortDescription: json['short_description'],
       genre: json['genre'],
       platform: json['platform'],
-      gameUrl: json['game_url'],
     );
   }
+  // Removed URL systems from models, all three endpoints
 }
 
 class GameCard extends StatelessWidget {
@@ -45,12 +42,7 @@ class GameCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => GameDetailPage(game: game),
-          ),
-        );
+        Navigator.pushNamed(context, '/detail', arguments: game.id); // altered to game.id argument, removed URL systems from model (above)
       },
       child: Container(
         decoration: BoxDecoration(
