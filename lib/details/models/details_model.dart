@@ -9,7 +9,7 @@ class Game {
   final String publisher;
   final String developer;
   final String releaseDate;
-  final SystemRequirements minimumSystemRequirements;
+  final SystemRequirements? minimumSystemRequirements;
   final List<Screenshot> screenshots;
 
   const Game({
@@ -39,9 +39,9 @@ class Game {
       publisher: json['publisher'],
       developer: json['developer'],
       releaseDate: json['release_date'],
-      minimumSystemRequirements: SystemRequirements.fromJson(
-        json['minimum_system_requirements'],
-      ),
+      minimumSystemRequirements: json['minimum_system_requirements'] != null
+          ? SystemRequirements.fromJson(json['minimum_system_requirements'])
+          : null,
       screenshots: (json['screenshots'] as List)
           .map((e) => Screenshot.fromJson(e))
           .toList(),
@@ -77,11 +77,11 @@ class SystemRequirements {
 
   factory SystemRequirements.fromJson(Map<String, dynamic> json) {
     return SystemRequirements(
-      os: json['os'],
-      processor: json['processor'],
-      memory: json['memory'],
-      graphics: json['graphics'],
-      storage: json['storage'],
+    os: json['os'] ?? 'N/A',
+    processor: json['processor'] ?? 'N/A',
+    memory: json['memory'] ?? 'N/A',
+    graphics: json['graphics'] ?? 'N/A',
+    storage: json['storage'] ?? 'N/A',
     );
   }
 }
