@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MainScreen(), // 👈 remplace HomePage
+      home: const MainScreen(),
       routes: {
         '/detail': (context) {
           final id = ModalRoute.of(context)!.settings.arguments as int;
