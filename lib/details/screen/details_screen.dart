@@ -128,32 +128,37 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
                         const SizedBox(height: 20),
 
-                        Card(
-                          elevation: 4,
-                          color: backgroundMain,
-                          child: Padding(
-                            padding: const EdgeInsets.all(16),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  "Minimum System Requirements",
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: textPrimary,
-                                  ),
+                        game.minimumSystemRequirements != null
+                          ? Card(
+                              elevation: 4,
+                              color: backgroundMain,
+                              child: Padding(
+                                padding: const EdgeInsets.all(16),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Text(
+                                      "Minimum System Requirements",
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color: textPrimary,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 10),
+                                    infoRow("OS", game.minimumSystemRequirements!.os),
+                                    infoRow("Processor", game.minimumSystemRequirements!.processor),
+                                    infoRow("Memory", game.minimumSystemRequirements!.memory),
+                                    infoRow("Graphics", game.minimumSystemRequirements!.graphics),
+                                    infoRow("Storage", game.minimumSystemRequirements!.storage),
+                                  ],
                                 ),
-                                const SizedBox(height: 10),
-                                infoRow("OS", game.minimumSystemRequirements!.os),
-                                infoRow("Processor", game.minimumSystemRequirements!.processor),
-                                infoRow("Memory", game.minimumSystemRequirements!.memory),
-                                infoRow("Graphics", game.minimumSystemRequirements!.graphics),
-                                infoRow("Storage", game.minimumSystemRequirements!.storage),
-                              ],
+                              ),
+                            )
+                          : const Text(
+                              "No system requirements found",
+                              style: TextStyle(color: textSecondary),
                             ),
-                          ),
-                        ),
 
                         const SizedBox(height: 16),
 
